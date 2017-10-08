@@ -1,0 +1,36 @@
+#right {
+  margin-left: 15px;
+  width: 600px;
+  #tweet-box {
+    background: $color-header;
+    height: 60px;
+    width: 100%;
+    .textbox-wrapper {
+      align-items: center;
+      background: $color-header;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      width: 100%;
+      .textbox {
+        background: #fff;
+        border: solid 1px #8F0700;
+        border-radius: 8px;
+        box-shadow: none;
+        color: $color-text-link;
+        font-size: 14px;
+        height: 20px;
+        line-height: 20px;
+        padding: 8px 31px 8px 8px;
+        vertical-align: middle;
+        width: 500px;
+      }
+    }
+  }
+  article {
+    background: $color-2nd;
+    margin-top: 1px;
+    padding: 20px 0;
+    width: 100%;
+  }
+}

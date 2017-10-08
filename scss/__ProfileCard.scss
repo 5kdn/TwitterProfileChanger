@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'edgeicons';
+  src: url('edge-icons-Regular.woff') format('woff');
+}
+
+#ProfileCard {
+  padding: 0 5px;
+  width: 290px;
+  &>* {
+    margin-bottom: 10px;
+  }
+  #Card-icon {
+    background: #FFF;
+    border-radius: 50%;
+    height: 210px;
+    position: relative;
+    top: -200px;
+    width: 210px;
+    >img {
+      border-radius: 50%;
+      display: block;
+      height: 200px;
+      width: 200px;
+    }
+  }
+  #Card-wrapper {
+    color: #14171a;
+    font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    position: relative;
+    top: -205px;
+    line-height: 1.4em;
+    #Card-handle {
+      #screen {
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 28px;
+        word-wrap: break-word;
+      }
+      #handle {
+        color: #657786;
+        font-size: 14px;
+      }
+    }
+    #Card-bio {
+      margin-top: 10px;
+    }
+    #Card-location {
+      margin-top: 10px;
+      display: inline-block;
+      color: #657786;
+      &::before {
+        content: '\f031';
+        font-family: 'edgeicons';
+      }
+    }
+    #Card-urlText-wrapper {
+      color: #657786;
+      &::before {
+        content: '\f098';
+        font-family: 'edgeicons';
+      }
+      #Card-urlText {
+        color: $color-text-link;
+        // font-size: 10px;
+      }
+    }
+  }
+}

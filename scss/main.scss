@@ -1,0 +1,50 @@
+// scss
+// Twitter color pallet
+$color-base: rgb(230, 236, 240); // ヘッダとかarticleとか
+$color-header: rgb(243, 230, 229);
+$color-1st: rgb(255, 255, 255); // article base
+$color-2nd: rgb(245, 248, 250); // article base hover
+$color-text: rgb(20, 23, 26);
+$color-text-link: rgb(143, 7, 0);
+@import '__reset.scss';
+@import '__Header.scss';
+@import '__Canopy.scss';
+@import '__ProfileCard.scss';
+@import '__Right.scss';
+@font-face {
+  font-family: 'edgeicons';
+  src: url('edge-icons-Regular.woff') format('woff');
+}
+
+.outer-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.outer-spacer {
+  display: flex;
+  justify-content: center;
+}
+
+.inner-spacer {
+  background: rgba(255, 0, 0, .5);
+  width: 14 * 2 + 10 + 290 + 590px;
+}
+
+
+
+body {
+  background: $color-base;
+  height: 100%;
+  width: 100%;
+  #wrapper {
+    padding-top: 10px;
+    #container {
+      display: flex;
+      height: 100%; // TODO:最後外す
+      padding: 56px 14px 15px;
+      width: 14 * 2 + 10 + 290 + 590px;
+    }
+  }
+}

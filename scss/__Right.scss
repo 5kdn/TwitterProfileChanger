@@ -27,7 +27,9 @@
       }
     }
   }
-  article {
+  article.history {
+    visibility: hidden;
+    display: none;
     background: $color-2nd;
     margin-top: 1px;
     padding: 20px 0;

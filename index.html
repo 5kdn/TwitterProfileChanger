@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>@5kdn's Profile Changer</title>
+  <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="scss/main.css">
 </head>
 <body>
@@ -13,18 +14,15 @@
     <li><a href="/">Top2</a></li>
     <li><a href="/">Topをかけろ</a></li>
   </ul>
-<!-- <div class="inner-spacer"> -->
-<!-- </div> -->
-</div>
+</div><!-- .inner-spacer -->
+
 
 <div id="Canopy">
     <div id="Canopy-header"></div>
     <div id="Canopy-navBar" class="outer-spacer"></div>
-</div>
-
+</div><!-- #Canopy -->
 
 <div id="wrapper" class="outer-spacer">
-
   <div id="container">
 
     <div id="ProfileCard">
@@ -40,14 +38,32 @@
           <a href="http://5kdn.red" id="Card-urlText">sakuden542.appspot.com</a>
         </span>
       </div><!-- #Card-wrapper -->
-      </div> <!-- #ProfileCard -->
+    </div> <!-- #ProfileCard -->
 
 
 
     <div id="right">
       <div id="tweet-box">
         <div class="textbox-wrapper">
-          <div class="textbox">いまどうしてる？</div>
+          <div>
+            <span class="capture">name:</span>
+            <input type="text" class="textbox" placeholder="name?" />
+          </div>
+          <div>
+            <span class="capture">bio:</span>
+            <input type="text" class="textbox" placeholder="biography?" />
+          </div>
+          <div>
+            <span class="capture">place:</span>
+            <input type="text" class="textbox" placeholder="place?"/>
+          </div>
+          <div class="button-wrapper">
+            <input type="checkbox" name="tweet" id="allow_tweet" checked />
+            <label for="allow_tweet">ツイートする&nbsp;&nbsp;&nbsp;</label>
+            <button class="button" type="button" disabled>
+              <span class="button-text">変更</span>
+            </button>
+          </div><!-- .button-wrapper -->
         </div>
       </div><!-- #tweet-box -->
 
@@ -60,8 +76,8 @@
       <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
       <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
       <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-    </div><!-- right -->
-  </div><!-- container -->
-</div><!-- wrapper -->
+    </div><!-- #right -->
+  </div><!-- #container -->
+</div><!-- #wrapper.outer-spacer -->
 </body>
 </html>

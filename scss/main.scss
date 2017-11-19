@@ -32,8 +32,6 @@ $color-text-link: rgb(143, 7, 0);
   width: 14 * 2 + 10 + 290 + 590px;
 }
 
-
-
 body {
   background: $color-base;
   height: 100%;
@@ -48,3 +46,36 @@ body {
     }
   }
 }
+
+.button {
+  background: $color-text-link;
+  border-radius: 100px;
+  border: none;
+  color: $color-base;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  right: 0;
+  text-align: center;
+  vertical-align: middle;
+  &.disabled {
+    background: #d9b3b0;
+    cursor: auto;
+  }
+} //.button
+
+.textbox {
+  background: $color-1st;
+  border-radius: 8px;
+  border: solid 1px $color-text-link;
+  box-shadow: none;
+  color: $color-text-link;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  outline: 0;
+  padding: 8px 31px 8px 8px;
+  vertical-align: middle;
+} //.textbox

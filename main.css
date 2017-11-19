@@ -45,12 +45,46 @@ table {
 }
 
 #header {
+  display: none;
+  visibility: hidden;
   background: white;
   box-shadow: 0 0 3px #888;
   height: 46px;
   position: fixed;
   width: 100%;
   z-index: 99;
+}
+
+#header > ul {
+  background: #F00;
+  height: 100%;
+  padding-left: 20px;
+  width: 100%;
+}
+
+#header > ul > li {
+  display: inline-block;
+  height: 100%;
+}
+
+#header > ul > li > a {
+  background: #F00;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-width: 0 1px;
+  box-sizing: border-box;
+  color: #333;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 0 30px;
+  text-align: center;
+  text-decoration: none;
+}
+
+#header > ul > li > a:hover {
+  box-shadow: 0 -5px rgba(0, 0, 0, 0.2) inset;
+  box-sizing: border-box;
 }
 
 #Canopy {
@@ -157,34 +191,40 @@ table {
 
 #right #tweet-box {
   background: #f3e6e5;
-  height: 60px;
   width: 100%;
+  display: block;
 }
 
 #right #tweet-box .textbox-wrapper {
   align-items: center;
   background: #f3e6e5;
-  display: flex;
+  padding-left: 42px;
+  padding-top: 10px;
   height: 100%;
   justify-content: center;
   width: 100%;
+  display: block;
 }
 
-#right #tweet-box .textbox-wrapper .textbox {
-  background: #fff;
-  border: solid 1px #8F0700;
-  border-radius: 8px;
-  box-shadow: none;
-  color: #8f0700;
-  font-size: 14px;
-  height: 20px;
-  line-height: 20px;
-  padding: 8px 31px 8px 8px;
-  vertical-align: middle;
-  width: 500px;
+#right #tweet-box .button-wrapper {
+  display: block;
+  text-align: right;
+  width: 541px;
+  margin-bottom: 10px;
 }
 
-#right article {
+#right #tweet-box .capture {
+  display: inline-block;
+  width: 52px;
+}
+
+#right #tweet-box .textbox {
+  width: 448px;
+}
+
+#right article.history {
+  visibility: hidden;
+  display: none;
   background: #f5f8fa;
   margin-top: 1px;
   padding: 20px 0;
@@ -227,4 +267,38 @@ body #wrapper #container {
   height: 100%;
   padding: 56px 14px 15px;
   width: 918px;
+}
+
+.button {
+  background: #8f0700;
+  border-radius: 100px;
+  border: none;
+  color: #e6ecf0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 16px;
+  right: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button.disabled {
+  background: #d9b3b0;
+  cursor: auto;
+}
+
+.textbox {
+  background: white;
+  border-radius: 8px;
+  border: solid 1px #8f0700;
+  box-shadow: none;
+  color: #8f0700;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  outline: 0;
+  padding: 8px 31px 8px 8px;
+  vertical-align: middle;
 }

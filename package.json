@@ -1,0 +1,27 @@
+{
+  "name": "twitter-profile-changer",
+  "version": "1.0.0",
+  "description": "Change @5kdn's twitter profile changer",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "~3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "pug": "~2.0.0-rc.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://git.5kdn.red/git/skdn/TwitterProfileChanger.git",
+  "author": "skdn",
+  "license": "CC",
+  "bugs": {
+    "url": "https://git.5kdn.red/git/skdn/TwitterProfileChanger.git/issues",
+    "email": "sakuden542+nodejs+bugreport@gmail.com"
+  }
+}

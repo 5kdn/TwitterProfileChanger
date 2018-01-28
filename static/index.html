@@ -1,84 +1,69 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>@5kdn's Profile Changer</title>
-  <link rel="stylesheet" href="main.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="script.js"></script>
-</head>
-<body>
-
-<div id="header" class="outer-spacer">
-  <ul>
-    <li><a href="/">Top</a></li>
-    <li><a href="/">Top2</a></li>
-    <li><a href="/">Topをかけろ</a></li>
-  </ul>
-</div><!-- .inner-spacer -->
-
-
-<div id="Canopy">
-    <div id="Canopy-header"></div>
-    <div id="Canopy-navBar" class="outer-spacer"></div>
-</div><!-- #Canopy -->
-
-<div id="wrapper" class="outer-spacer">
-  <div id="container">
-
-    <div id="ProfileCard">
-      <div id="Card-icon" class="outer-center"><img src="./skdn.jpg"></div>
-      <div id="Card-wrapper">
-        <div id="Card-handle">
-          <div id="screen">5kdn</div>
-          <div id="handle">@5kdn</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>@5kdn's Profile Changer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/script.min.js"></script>
+  </head>
+  <body>
+    <div class="outer-spacer" id="header">
+      <ul>
+        <li><a href="/abc"><span>Top</span></a></li>
+        <li><a href="/def"><span>Top2</span></a></li>
+        <li><a href="/ghi"><span>Topをかけろ</span></a></li>
+      </ul>
+    </div>
+    <div id="Canopy">
+      <div id="Canopy-header"></div>
+      <div class="outer-spacer" id="Canopy-navBar"></div>
+    </div>
+    <div class="outer-spacer" id="wrapper">
+      <div id="container">
+        <div id="ProfileCard">
+          <div class="outer-center" id="Card-icon"><img src="./skdn.jpg"></div>
+          <div id="Card-wrapper">
+            <div id="Card-handle">
+              <div id="screen">5kdn</div>
+              <div id="handle">@5kdn</div>
+            </div>
+            <p id="Card-bio">あれ</p><span id="Card-location">ナタデココ</span><br><span id="Card-urlText-wrapper"><a id="Card-urlText" href="http://5kdn.red">http://5kdn.red</a></span>
+          </div>
         </div>
-        <p id="Card-bio">あれ</p>
-        <span id="Card-location">ナタデココ</span><br>
-        <span id="Card-urlText-wrapper">
-          <a href="http://5kdn.red" id="Card-urlText">sakuden542.appspot.com</a>
-        </span>
-      </div><!-- #Card-wrapper -->
-    </div> <!-- #ProfileCard -->
-
-
-
-    <div id="right">
-      <div id="tweet-box">
-        <div class="textbox-wrapper">
-          <div>
-            <span class="capture">name:</span>
-            <input type="text" class="textbox name" placeholder="name?" />
+        <div id="right">
+          <div id="tweet-box">
+            <div class="textbox-wrapper">
+              <div>
+                <div class="capture"><span class="title">name:</span>
+                  <input class="textbox name" type="text" placeholder="name?">
+                </div>
+              </div>
+              <div>
+                <div class="capture"><span class="title">bio:</span>
+                  <input class="textbox description" type="text" placeholder="biography?">
+                </div>
+              </div>
+              <div>
+                <div class="capture"><span class="title">place:</span>
+                  <input class="textbox location" type="text" placeholder="place?">
+                </div>
+              </div>
+              <div class="button-wrapper">
+                <input id="allow_tweet" type="checkbox" name="tweet" checked><span name="allow_tweet">
+                  <label for="allow_tweet">ツイートする&nbsp;&nbsp;&nbsp;</label></span>
+                <button class="button submit" type="button" disabled><span class="button-text">変更</span></button>
+              </div>
+            </div>
           </div>
-          <div>
-            <span class="capture">bio:</span>
-            <input type="text" class="textbox description" placeholder="biography?" />
-          </div>
-          <div>
-            <span class="capture">place:</span>
-            <input type="text" class="textbox location" placeholder="place?"/>
-          </div>
-          <div class="button-wrapper">
-            <input type="checkbox" name="tweet" id="allow_tweet" checked />
-            <label for="allow_tweet">ツイートする&nbsp;&nbsp;&nbsp;</label>
-            <button class="button submit" type="button" disabled>
-              <span class="button-text">変更</span>
-            </button>
-          </div><!-- .button-wrapper -->
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
         </div>
-      </div><!-- #tweet-box -->
-
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-      <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
-    </div><!-- #right -->
-  </div><!-- #container -->
-</div><!-- #wrapper.outer-spacer -->
-</body>
+      </div>
+    </div>
+  </body>
 </html>

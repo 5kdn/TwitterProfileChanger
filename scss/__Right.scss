@@ -1,9 +1,14 @@
+$columnSize: 600px;
+$columnSizeMin: 100px;
+
 #right {
   margin-left: 15px;
-  width: 600px;
+  width: 100%;
+  max-width: $columnSize;
+  min-width: $columnSizeMin;
   #tweet-box {
     background: $color-header; // height: 60px;
-    width: 100%;
+    width: 80%;
     display: block;
     .textbox-wrapper {
       align-items: center;
@@ -18,15 +23,27 @@
     .button-wrapper {
       display: block;
       text-align: right;
-      width: 541px;
+      max-width: $columnSize - 59px;
+      min-width: $columnSizeMin - 59px;
       margin-bottom: 10px;
+
+      .button.submit{
+        margin-right: 14px;
+      }
     }
-    .capture{
-      display: inline-block;
-      width:52px;
+    .capture {
+      display: flex;
+      width: 100%;
+      span.title {
+        display: flex;
+        align-items: center;
+        width: 80px;
+      }
     }
-    .textbox{
-      width: 500px - 52px;
+    .textbox {
+      width: 100%;
+      max-width: $columnSize - 100px - 52px;
+      margin-right: 14px;
     }
   } //#tweet-box
   // ------------------------------------------------------

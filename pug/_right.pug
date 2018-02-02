@@ -3,15 +3,15 @@ div#right
   div#tweet-box: div.textbox-wrapper
     div: div.capture
       span.title name:
-      input.textbox.name(type="text" placeholder="name?")
+      input.textbox.name(type="text" placeholder="{{data['screen']}}")
 
     div: div.capture
-      span.title bio:
-      input.textbox.description(type="text" placeholder="biography?")
+      span.title description:
+      input.textbox.description(type="text" placeholder="{{data['description']}}")
 
     div: div.capture
-      span.title place:
-      input.textbox.location(type="text" placeholder="place?")
+      span.title locale:
+      input.textbox.location(type="text" placeholder="{{data['location']}}")
 
     div.button-wrapper
       input#allow_tweet(type="checkbox" name="tweet" checked)

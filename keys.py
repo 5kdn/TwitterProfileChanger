@@ -18,7 +18,7 @@ class Token(object):
   key = '56989640-XnXlqPPBccGz0UBpCrN196VsodblXDN9oG4jc8bvv'
   secret = 'JB3KgaKrx3NbG5RodulCiBMsGZdv6JXYNK7ErAKg'
 
-  def __init__(self, DEBUG=False):
+  def __init__(self, DEBUG=True):
     """For debug user."""
     if DEBUG == True:
       # @sakuden

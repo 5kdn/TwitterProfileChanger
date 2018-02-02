@@ -1,9 +1,13 @@
+$columnSize: 600px;
+$columnSizeMin: 100px;
 #right {
   margin-left: 15px;
-  width: 600px;
+  width: 100%;
+  max-width: $columnSize;
+  min-width: $columnSizeMin;
   #tweet-box {
     background: $color-header; // height: 60px;
-    width: 100%;
+    width: 80%;
     display: block;
     .textbox-wrapper {
       align-items: center;
@@ -11,22 +15,40 @@
       padding-left: 42px;
       padding-top: 10px;
       height: 100%;
-      justify-content: center;
-      width: 100%;
+      justify-content: center; // width: 100%;
+      width: $columnSize - 42px;
       display: block;
     } //.textbox-wrapper
     .button-wrapper {
       display: block;
       text-align: right;
-      width: 541px;
+      max-width: $columnSize - 59px;
+      min-width: $columnSizeMin - 59px;
       margin-bottom: 10px;
+      .button.submit {
+        margin-right: 14px;
+        &:hover {
+          background: lighten($color-text-link, 10%);
+        }
+        &:disabled {
+          background: grayscale($color-text-link);
+          color: darken(#FFF, 30%);
+        }
+      }
     }
-    .capture{
-      display: inline-block;
-      width:52px;
+    .capture {
+      display: flex;
+      width: 100%;
+      span.title {
+        display: flex;
+        align-items: center;
+        width: 130px;
+      }
     }
-    .textbox{
-      width: 500px - 52px;
+    .textbox {
+      width: 100%;
+      max-width: $columnSize - 100px - 52px;
+      margin-right: 14px;
     }
   } //#tweet-box
   // ------------------------------------------------------
@@ -36,6 +58,8 @@
     background: $color-2nd;
     margin-top: 1px;
     padding: 20px 0;
-    width: 100%;
+    &:hover {
+      background: #e6ecf0;
+    }
   } //article.history
 } // #right

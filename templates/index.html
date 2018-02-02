@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>@5kdn's Profile Changer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/script.min.js"></script>
+  </head>
+  <body>
+    <div class="outer-spacer" id="header">
+      <ul>
+        <li><a href="/abc"><span>Top</span></a></li>
+        <li><a href="/def"><span>Top2</span></a></li>
+        <li><a href="/ghi"><span>Topをかけろ</span></a></li>
+      </ul>
+    </div>
+    <div id="Canopy">
+      <div id="Canopy-header"></div>
+      <div class="outer-spacer" id="Canopy-navBar"></div>
+    </div>
+    <div class="outer-spacer" id="wrapper">
+      <div id="container">
+        <div id="ProfileCard">
+          <div class="outer-center" id="Card-icon"><img src="./skdn.jpg"></div>
+          <div id="Card-wrapper">
+            <div id="Card-handle">
+              <div id="screen">{{data['screen']}}</div>
+              <div id="handle">@5kdn</div>
+            </div>
+            <p id="Card-des">{{data['description']}}</p><span id="Card-location">{{data['location']}}</span><br><span id="Card-urlText-wrapper"><a id="Card-urlText" href="http://5kdn.red">http://5kdn.red</a></span>
+          </div>
+        </div>
+        <div id="right">
+          <div id="tweet-box">
+            <div class="textbox-wrapper">
+              <div>
+                <div class="capture"><span class="title">name:</span>
+                  <input class="textbox name" type="text" placeholder="{{data['screen']}}">
+                </div>
+              </div>
+              <div>
+                <div class="capture"><span class="title">description:</span>
+                  <input class="textbox description" type="text" placeholder="{{data['description']}}">
+                </div>
+              </div>
+              <div>
+                <div class="capture"><span class="title">locale:</span>
+                  <input class="textbox location" type="text" placeholder="{{data['location']}}">
+                </div>
+              </div>
+              <div class="button-wrapper">
+                <input id="allow_tweet" type="checkbox" name="tweet" checked><span name="allow_tweet">
+                  <label for="allow_tweet">ツイートする&nbsp;&nbsp;&nbsp;</label></span>
+                <button class="button submit" type="button" disabled><span class="button-text">変更</span></button>
+              </div>
+            </div>
+          </div>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+          <article class="history">2017/10/05 に変更されました。<br>　なまえ：skdn<br>　ばしょ：どこか<br>　あ　れ：なんかほら</article>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

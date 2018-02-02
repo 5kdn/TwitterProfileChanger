@@ -1,0 +1,33 @@
+doctype
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    title @5kdn's Profile Changer
+    link(rel="stylesheet" href='css/main.css')
+    //- style(src='/static/style.css')
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    //- script(src="/static/script.js")
+    script(src="js/script.min.js")
+  body
+    include _global-menu.pug
+
+    div#Canopy
+      div#Canopy-header
+      div#Canopy-navBar.outer-spacer
+
+    div#wrapper.outer-spacer
+      div#container
+        div#ProfileCard
+          div#Card-icon.outer-center
+            img(src="./skdn.jpg")
+          div#Card-wrapper
+            div#Card-handle
+              div#screen {{data['screen']}}
+              div#handle @5kdn
+            p#Card-des {{data['description']}}
+            span#Card-location {{data['location']}}
+            br
+            span#Card-urlText-wrapper
+              a#Card-urlText(href="http://5kdn.red") http://5kdn.red
+
+        include _right.pug

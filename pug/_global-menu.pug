@@ -1,0 +1,11 @@
+-
+  var page = [
+  //- ["URL", "title"],
+    ["/abc", "Top"],
+    ["/def", "Top2"],
+    ["/ghi", "Topをかけろ"],
+  ]
+
+div#header.outer-spacer: ul
+  each item in page
+    li: a(href=item[0]): span #{item[1]}

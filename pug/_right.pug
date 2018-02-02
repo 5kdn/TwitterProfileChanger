@@ -1,0 +1,31 @@
+div#right
+  //- tweet box
+  div#tweet-box: div.textbox-wrapper
+    div: div.capture
+      span.title name:
+      input.textbox.name(type="text" placeholder="{{data['screen']}}")
+
+    div: div.capture
+      span.title description:
+      input.textbox.description(type="text" placeholder="{{data['description']}}")
+
+    div: div.capture
+      span.title locale:
+      input.textbox.location(type="text" placeholder="{{data['location']}}")
+
+    div.button-wrapper
+      input#allow_tweet(type="checkbox" name="tweet" checked)
+      span(name="allow_tweet"): label(for="allow_tweet") ツイートする&nbsp;&nbsp;&nbsp;
+      button.button.submit(type="button" disabled)
+        span.button-text 変更
+
+  //- change log
+  - for (var i = 0; i <= 5; i++)
+    article.history
+      |2017/10/05 に変更されました。
+      br
+      |　なまえ：skdn
+      br
+      |　ばしょ：どこか
+      br
+      |　あ　れ：なんかほら

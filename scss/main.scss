@@ -13,7 +13,7 @@ $color-text-link: rgb(143, 7, 0);
 @import '__Right.scss';
 @font-face {
   font-family: 'edgeicons';
-  src: url('edge-icons-Regular.woff') format('woff');
+  src: url('../edge-icons-Regular.woff') format('woff');
 }
 
 .outer-center {
@@ -42,7 +42,8 @@ body {
       display: flex;
       height: 100%; // TODO:最後外す
       padding: 56px 14px 15px;
-      width: 14 * 2 + 10 + 290 + 590px;
+      width: 100%;
+      max-width: 14 * 2 + 10 + 290 + 590px;
     }
   }
 }

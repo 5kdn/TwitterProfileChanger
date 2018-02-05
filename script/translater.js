@@ -6,7 +6,7 @@ $(function () {
   DEFAULTVAL.location = $('input.textbox.location').attr('placeholder');
 
   // change detector
-  $('input.textbox').on('keypress change paste', ()=>{
+  $('input.textbox').on('keypress change paste', function (){
     if ( DEFAULTVAL.name        != null
       && DEFAULTVAL.description != null
       && DEFAULTVAL.location    != null
@@ -24,7 +24,7 @@ $(function () {
 
 
   function getStatus() {
-    $.getJSON('/getStatus', null)
+    $.getJSON('/twitter/getStatus', null)
       .then(
       function (data) {
         console.log(data);
@@ -63,13 +63,13 @@ $(function () {
 
     console.log(JSON.stringify(data));
     $.ajax({
-      url: '/setStatus',
+      url: '/twitter/setStatus',
       type: 'POST',
       data: JSON.stringify(data),
       dataType: 'json',
       contentType: 'application/json; charset=utf-8'
     })
-    .then( (data) => {
+    .then( function(data){
       // success
       console.log('送信成功');
       $('input.textbox.name').val(data['nam']);
@@ -83,14 +83,15 @@ $(function () {
       DEFAULTVAL.description = data['des'];
       DEFAULTVAL.location = data['loc'];
     })
-    .catch( () => {console.log('送信失敗')} )
-    .then( () =>{
+    .catch( function(){console.log('送信失敗')} )
+    .then( function(){
       // allways
       $('button.button.submit').removeAttr('disabled');
     } );
   }
 
-  $('button.button.submit').on('click', () =>
-  setStatus());
-  return false;
+  $('button.button.submit').on('click', function(){
+    setStatus();
+    return false;
+  });
 });

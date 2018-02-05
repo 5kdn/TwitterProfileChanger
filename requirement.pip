@@ -3,3 +3,4 @@ Flask==0.12.2
 oauth2==1.9.0.post1
 tweepy==3.5.0
 pytz==2017.3
+uwsgi==2.0.15

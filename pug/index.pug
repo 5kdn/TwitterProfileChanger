@@ -3,11 +3,11 @@ html(lang="ja")
   head
     meta(charset="UTF-8")
     title @5kdn's Profile Changer
-    link(rel="stylesheet" href='css/main.css')
+    link(rel="stylesheet" href='/twitter/css/main.css')
     //- style(src='/static/style.css')
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     //- script(src="/static/script.js")
-    script(src="js/script.min.js")
+    script(src="/twitter/js/script.min.js")
   body
     include _global-menu.pug
 
@@ -19,7 +19,7 @@ html(lang="ja")
       div#container
         div#ProfileCard
           div#Card-icon.outer-center
-            img(src="./skdn.jpg")
+            img(src="/twitter/static/skdn.jpg")
           div#Card-wrapper
             div#Card-handle
               div#screen {{data['screen']}}

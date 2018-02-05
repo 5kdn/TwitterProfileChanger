@@ -1,0 +1,18 @@
+[Unit]
+Description = Twitter Profile Changer uWsgi
+After       = nginx.service
+Wants       = nginx.service
+
+[Service]
+Type        = notify #simple
+User        = skdn
+Group       = skdn
+WorkingDirectory  = /var/www/TwitterProfileChanger/webroot
+ExecStart   = /usr/local/pyenv/versions/TwitterProfileChanger/bin/uwsgi --ini /var/www/TwitterProfileChanger/webroot/uwsgi.ini
+ExecReload  = /bin/kill -HUP $MAINPID
+ExecStop    = /bin/kill $MAINPID
+PrivateTmp  = true
+Restart     = always
+
+[Install]
+WantedBy    = multi-user.target

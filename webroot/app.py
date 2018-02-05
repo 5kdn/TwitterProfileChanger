@@ -3,19 +3,19 @@
 """Flask."""
 
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from GetStatus import GetStatus
-from SetStatus import SetStatus
 import json
 
-from unittest import mock
+from GetStatus import GetStatus
+from SetStatus import SetStatus
+
 
 app = Flask(__name__, static_folder='static')
 
 
 # static files
-@app.route('/')
+@app.route('/twitter/')
 def index():
-  # """Index."""
+  """Index."""
   status = json.loads(getStatus())
   print(status['name'])
   data = {
@@ -26,34 +26,19 @@ def index():
   return render_template('index.html', data=data)
 
 
-@app.route('/css/<name>.css')
+@app.route('/twitter/css/<name>.css')
 def main_css(name='main'):
   """Stylesheet."""
   return render_template(f'/css/{name}.css'), 200, {"Content-Type": 'text/css; charset=utf-8'}
 
 
-@app.route('/js/<script>.js')
+@app.route('/twitter/js/<script>.js')
 def script_js(script='script'):
   """Javascript."""
   return render_template(f'/js/{script}.js'), 200, {"Content-Type": 'text/javascript; charset=utf-8'}
 
 
-  # return redirect('/static/js/{{script}}.js')
-# @app.route('/static')
-# def index():
-#   """Index."""
-#   return redirect('/static/index.html')
-
-# @app.route('/css/<name>.css')
-# def main_css(name='main'):
-#   """Stylesheet."""
-#   return redirect('/static/css/{{name}}.css')
-# @app.route('/js/<script>.js')
-# def script_js(script='script'):
-#   """Javascript."""
-#   return redirect('/static/js/{{script}}.js')
-
-@app.route('/skdn.jpg')
+@app.route('/twitter/skdn.jpg')
 def skdn_jpg():
   """Icon."""
   return redirect('/static/skdn.jpg')
@@ -64,21 +49,16 @@ def font_file():
   return redirect('/static/edge-icons-Regular.woff')
 
 
-@app.route('/favicon.ico')
-def favicon():
-  """Favicon."""
-  return redirect('/static/favicon.ico')
-
 # ==============================================================================
 
-@app.route('/getStatus')
+@app.route('/twitter/getStatus')
 def getStatus():
   """Get Status."""
   g = GetStatus()
   return g.getStatus()
 
 
-@app.route('/setStatus', methods=['POST'])
+@app.route('/twitter/setStatus', methods=['POST'])
 def setStatus():
   """Set Status."""
   if request.headers['Content-Type'] != 'application/json; charset=UTF-8':

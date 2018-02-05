@@ -42,7 +42,9 @@ var sassTarget = sassFiles.concat(sassIgnore);
 
 gulp.task('css', () =>{
   return gulp.src(sassTarget)
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(gulp.dest(path.join(rootDir + 'css')));
 });
 
@@ -62,8 +64,8 @@ var jsTarget = jsFiles.concat(jsIgnore);
 gulp.task('js', function () {
   return gulp.src(jsTarget)
   .pipe(plumber())                // error
+  .pipe(uglify({}))
   .pipe(concat('script.js'))
-  // .pipe(uglify())
   .pipe(rename('script.min.js'))
   .pipe(gulp.dest(path.join(rootDir, 'js/')));
 });

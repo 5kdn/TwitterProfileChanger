@@ -18,12 +18,12 @@ class Token(object):
   key = '56989640-XnXlqPPBccGz0UBpCrN196VsodblXDN9oG4jc8bvv'
   secret = 'JB3KgaKrx3NbG5RodulCiBMsGZdv6JXYNK7ErAKg'
 
-  def __init__(self, DEBUG=True):
-    """For debug user."""
-    if DEBUG == True:
-      # @sakuden
-      self.key = '618019384-LlFm59ZOR6dKlg3Wb6luvbUGVRPObMPBgcxPS2hk'
-      self.secret = 'Jc3WAHLdOXdGiax3gY8w4EL3BsNPGArMdcR15WYcsE'
+#  def __init__(self, DEBUG=True):
+#    """For debug user."""
+#    #if DEBUG == True:
+#    #  # @sakuden
+#    #  self.key = '618019384-LlFm59ZOR6dKlg3Wb6luvbUGVRPObMPBgcxPS2hk'
+#    #  self.secret = 'Jc3WAHLdOXdGiax3gY8w4EL3BsNPGArMdcR15WYcsE'
 
 
 if __name__ == '__main__':

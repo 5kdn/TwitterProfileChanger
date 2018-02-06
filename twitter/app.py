@@ -9,7 +9,7 @@ from GetStatus import GetStatus
 from SetStatus import SetStatus
 
 
-app = Flask(__name__, static_folder='static')
+app = Flask(__name__, static_url_path='/twitter/static')
 
 
 # static files
@@ -38,15 +38,15 @@ def script_js(script='script'):
   return render_template(f'/js/{script}.js'), 200, {"Content-Type": 'text/javascript; charset=utf-8'}
 
 
-@app.route('/twitter/skdn.jpg')
+@app.route('/twitter/static/skdn.jpg')
 def skdn_jpg():
   """Icon."""
-  return redirect('/static/skdn.jpg')
+  return redirect('/twitter/static/skdn.jpg')
 
-@app.route('/edge-icons-Regular.woff')
+@app.route('/twitter/static/edge-icons-Regular.woff')
 def font_file():
   """Fontfile."""
-  return redirect('/static/edge-icons-Regular.woff')
+  return redirect('/twitter/static/edge-icons-Regular.woff')
 
 
 # ==============================================================================
@@ -74,7 +74,7 @@ def setStatus():
   if 'location' in request.json.keys(): location = request.json['location']
   else: location = None
 
-  if 'tweet' not in request.json.keys() or inrequest.json['tweet'] is not True:
+  if 'tweet' not in request.json.keys() or request.json['tweet'] is not True:
     tweet = False
   else: tweet = True
 
@@ -86,10 +86,13 @@ def setStatus():
     newProf = g.getStatus()
     # ToDo:logging
     return newProf
-  except:
+  except ValueError as e:
+    print(e)
     return jsonify(res='error'), 500
+  except:
+    return jsonify(res='error'), 501
 
 
 if __name__ == '__main__':
-  app.run(debug=True)
+  app.run()
 

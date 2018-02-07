@@ -54,8 +54,6 @@ class Log(object):
     requests.post(url, data=data, headers=headers)
 
 
-
-
   def add(self, name, description, location):
     """Add updates for db and send for discord."""
     try:
@@ -72,17 +70,17 @@ class Log(object):
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
       sql = 'select id, name, description, location, updated from updates order by id;'
-      items = []
       req = c.execute(sql).fetchall()
       tz = pytz.timezone('Asia/Tokyo')
+      items = []
       for row in c.execute(sql).fetchall():
         update = datetime.strptime(row[4], "%Y-%m-%d %H:%M:%S").replace(tzinfo=tz)
         item = [
-          ("index"      , str(row[0])),
-          ("name"       , row[1]),
-          ("description", row[2]),
-          ("location"   , row[3]),
-          ("update"     , str(update) ),
+          str(row[0]),
+          row[1],
+          row[2],
+          row[3],
+          str(update),
         ]
         items.append(item)
     return items
@@ -93,20 +91,24 @@ class Log(object):
       c = conn.cursor()
       sql = 'select id, name, description, location from updates order by id desc;'
       ret = c.execute(sql).fetchone()
-      item = {}
-      item['name'] = ret[0]
-      item['description'] = ret[1]
-      item['location'] = ret[2]
+      if ret is None:
+        item = {"":""}
+      else:
+        item = {}
+        item['name'] = ret[0]
+        item['description'] = ret[1]
+        item['location'] = ret[2]
     return item
+
 
 def main():
   print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-  # changeItem = { "name": "ensakud",
-  #                "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
-  #                "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
-  #               }
+  changeItem = { "name": "ensakud",
+                 "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
+                 "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
+                }
   l = Log()
-  # l.add(changeItem["name"], changeItem["description"], changeItem["location"])
+  l.add(changeItem["name"], changeItem["description"], changeItem["location"])
   # # =====================
   print('= getall ========================')
   items =  l.getAll()

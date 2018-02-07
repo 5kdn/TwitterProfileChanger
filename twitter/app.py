@@ -107,11 +107,11 @@ def getLogs():
 
 
 @app.route('/twitter/getRecentLog')
-def getLogs():
+def getLog():
   """Get All logs."""
   l = Log()
   return jsonify(l.getRecent())
 
 if __name__ == '__main__':
-  app.run()
+  app.run(DEBUG=True)
 

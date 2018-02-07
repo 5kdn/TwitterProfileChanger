@@ -22,10 +22,10 @@ div#right
   //- change log
   |
   |{% for log in logs %}
-  article.history {{log['update']}} に変更されました。
-  |なまえ：{{logs['name']}}
+  article.history {{log[4]}} に変更されました。
+  |なまえ：{{logs[1]}}
   br
-  |　ばしょ：{{logs['location']}}
+  |　ばしょ：{{logs[2]}}
   br
-  |　あ　れ：{{logs['discription']}}
+  |　あ　れ：{{logs[3]}}
   |{% endfor %}

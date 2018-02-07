@@ -4,3 +4,4 @@ __pycache__
 node_modules
 *.sock
 *.log
+twitter/updatelog.db

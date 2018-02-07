@@ -56,6 +56,13 @@
               </div>
             </div>
           </div>
+             {% for log in logs %}
+              <article class="history">{{ log[4] }} に変更されました。
+              <br>なまえ：{{ log[1] }}
+              <br>ばしょ：{{ log[2] }}
+              <br>あ　れ：{{ log[3] }}
+							</article>
+            {% endfor %}
         </div>
       </div>
     </div>

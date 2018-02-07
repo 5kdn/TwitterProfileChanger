@@ -25,7 +25,7 @@ def index():
       'location': status['location'],
   }
   l = Log()
-  return render_template('index.html', data=data, logs=jsonify( l.getAll() ) )
+  return render_template('index.html', data=data, logs=l.getAll() )
 
 
 @app.route('/twitter/css/<name>.css')

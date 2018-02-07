@@ -3,7 +3,7 @@
 const path = require('path');
 const plumber = require('gulp-plumber');      // error handling
 const notify  = require('gulp-notify');
-const rootDir = './webroot/templates/';
+const rootDir = './twitter/templates/';
 // const rootDir = './static/';
 
 // load Gulp plugin

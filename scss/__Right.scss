@@ -53,11 +53,9 @@ $columnSizeMin: 100px;
   } //#tweet-box
   // ------------------------------------------------------
   article.history {
-    visibility: hidden;
-    display: none;
     background: $color-2nd;
     margin-top: 1px;
-    padding: 20px 0;
+    padding: 20px;
     &:hover {
       background: #e6ecf0;
     }

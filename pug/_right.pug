@@ -23,9 +23,10 @@ div#right
   |
   |{% for log in logs %}
   article.history {{log[4]}} に変更されました。
-  |なまえ：{{logs[1]}}
-  br
-  |　ばしょ：{{logs[2]}}
-  br
-  |　あ　れ：{{logs[3]}}
+    br
+    |なまえ：{{log[1]}}
+    br
+    |ばしょ：{{log[2]}}
+    br
+    |あ　れ：{{log[3]}}
   |{% endfor %}

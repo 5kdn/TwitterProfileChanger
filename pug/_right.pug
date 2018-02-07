@@ -20,12 +20,12 @@ div#right
         span.button-text 変更
 
   //- change log
-  //- - for (var i = 0; i <= 5; i++)
-  //-   article.history
-  //-     |2017/10/05 に変更されました。
-  //-     br
-  //-     |　なまえ：skdn
-  //-     br
-  //-     |　ばしょ：どこか
-  //-     br
-  //-     |　あ　れ：なんかほら
+  |
+  |{% for log in logs %}
+  article.history {{log['update']}} に変更されました。
+  |なまえ：{{logs['name']}}
+  br
+  |　ばしょ：{{logs['location']}}
+  br
+  |　あ　れ：{{logs['discription']}}
+  |{% endfor %}

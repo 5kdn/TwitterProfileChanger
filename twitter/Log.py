@@ -4,11 +4,12 @@
 
 import os
 import sqlite3
-import datetime
+from datetime import datetime
 from contextlib import closing
 import json
 import requests
 
+import pytz
 
 class Log(object):
   """Log to db and discord."""
@@ -71,14 +72,19 @@ class Log(object):
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
       sql = 'select id, name, description, location, updated from updates order by id;'
-      items = {}
+      items = []
+      req = c.execute(sql).fetchall()
+      tz = pytz.timezone('Asia/Tokyo')
       for row in c.execute(sql).fetchall():
-        item = {}
-        item['name']        = row[1]
-        item['description'] = row[2]
-        item['location']    = row[3]
-        item['update']      = row[4]
-        items[row[0]] = item
+        update = datetime.strptime(row[4], "%Y-%m-%d %H:%M:%S").replace(tzinfo=tz)
+        item = [
+          ("index"      , str(row[0])),
+          ("name"       , row[1]),
+          ("description", row[2]),
+          ("location"   , row[3]),
+          ("update"     , str(update) ),
+        ]
+        items.append(item)
     return items
 
   def getRecent(self):
@@ -95,18 +101,21 @@ class Log(object):
 
 def main():
   print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-  changeItem = { "name": "ensakud",
-                 "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
-                 "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
-                }
+  # changeItem = { "name": "ensakud",
+  #                "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
+  #                "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
+  #               }
   l = Log()
-  l.add(changeItem["name"], changeItem["location"], changeItem["description"])
-  # =====================
+  # l.add(changeItem["name"], changeItem["description"], changeItem["location"])
+  # # =====================
   print('= getall ========================')
-  for item in l.getAll():
+  items =  l.getAll()
+  for item in items:
     print(item)
+  print('= getall ========================')
+  print( type(json.dumps(items)) )
   print('= get recent ====================')
-  print(l.getRecent())
+  # print(l.getRecent())
 
 if __name__ == '__main__':
   main()

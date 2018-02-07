@@ -27,4 +27,4 @@ class GetStatus(object):
 
 if __name__ == '__main__':
   g = GetStatus()
-  print(g.getStatus(DEBUG=True))
+  print(g.getStatus())

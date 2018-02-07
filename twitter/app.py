@@ -7,6 +7,7 @@ import json
 
 from GetStatus import GetStatus
 from SetStatus import SetStatus
+from Log import Log
 
 
 app = Flask(__name__, static_url_path='/twitter/static')
@@ -22,8 +23,9 @@ def index():
       'screen': status['name'],
       'description': status['description'],
       'location': status['location'],
-    }
-  return render_template('index.html', data=data)
+  }
+  l = Log()
+  return render_template('index.html', data=data, logs=jsonify( l.getAll() ) )
 
 
 @app.route('/twitter/css/<name>.css')
@@ -84,7 +86,11 @@ def setStatus():
     s.setStatus(name, description, location, tweet)
     g = GetStatus()
     newProf = g.getStatus()
-    # ToDo:logging
+
+    # Logging
+    l = Log()
+    l.add(name, description, location)
+
     return newProf
   except ValueError as e:
     print(e)
@@ -92,6 +98,19 @@ def setStatus():
   except:
     return jsonify(res='error'), 501
 
+
+@app.route('/twitter/getLogs')
+def getLogs():
+  """Get All logs."""
+  l = Log()
+  return jsonify(l.getAll())
+
+
+@app.route('/twitter/getRecentLog')
+def getLogs():
+  """Get All logs."""
+  l = Log()
+  return jsonify(l.getRecent())
 
 if __name__ == '__main__':
   app.run()

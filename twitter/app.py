@@ -113,5 +113,5 @@ def getLog():
   return jsonify(l.getRecent())
 
 if __name__ == '__main__':
-  app.run(DEBUG=True)
+  app.run()
 

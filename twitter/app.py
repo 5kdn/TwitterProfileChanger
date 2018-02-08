@@ -25,7 +25,13 @@ def index():
       'location': status['location'],
   }
   l = Log()
-  return render_template('index.html', data=data, logs=l.getAll() )
+  # maxval : 最大文字数
+  maxval = {
+    "name"        : 50,
+    "description" : 100,
+    "location"    : 200,
+  }
+  return render_template('index.html', data=data, logs=l.getAll(), maxval=maxval )
 
 
 @app.route('/twitter/css/<name>.css')

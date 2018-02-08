@@ -39,16 +39,32 @@ $columnSizeMin: 100px;
     .capture {
       display: flex;
       width: 100%;
+      justify-content: center;
       span.title {
         display: flex;
         align-items: center;
         width: 130px;
       }
-    }
-    .textbox {
-      width: 100%;
-      max-width: $columnSize - 100px - 52px;
-      margin-right: 14px;
+      .textbox {
+        width: $columnSize - 100px - 52px;
+        margin-right: 14px;
+      }
+      div.counter-wrapper {
+        display: flex;
+        width: 105px;
+        align-items: center;
+        justify-content: center;
+        .counter,
+        .maxval {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .maxval:before {
+          content: "/"
+        }
+      }
     }
   } //#tweet-box
   // ------------------------------------------------------

@@ -35,18 +35,30 @@
           <div id="tweet-box">
             <div class="textbox-wrapper">
               <div>
-                <div class="capture"><span class="title">name:</span>
+                <div class="capture name"><span class="title">name:</span>
                   <input class="textbox name" type="text" placeholder="{{data['screen']}}">
+                  <div class="name counter-wrapper">
+                    <div class="name counter">0</div>
+                    <div class="name maxval">{{maxval["name"]}}</div>
+                  </div>
                 </div>
               </div>
               <div>
-                <div class="capture"><span class="title">description:</span>
+                <div class="capture description"><span class="title">description:</span>
                   <input class="textbox description" type="text" placeholder="{{data['description']}}">
+                  <div class="description counter-wrapper">
+                    <div class="description counter">0</div>
+                    <div class="description maxval">{{maxval["description"]}}</div>
+                  </div>
                 </div>
               </div>
               <div>
-                <div class="capture"><span class="title">locale:</span>
+                <div class="capture location"><span class="title">locale:</span>
                   <input class="textbox location" type="text" placeholder="{{data['location']}}">
+                  <div class="location counter-wrapper">
+                    <div class="location counter">0</div>
+                    <div class="location maxval">{{maxval["location"]}}</div>
+                  </div>
                 </div>
               </div>
               <div class="button-wrapper">

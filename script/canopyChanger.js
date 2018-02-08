@@ -10,11 +10,6 @@ window.onload = function() {
     CC.description = document.querySelector('input.textbox.description');
     CC.location = document.querySelector('input.textbox.location');
 
-    // 初回
-    // CanopyChanger.name.innerHTML = CC.name.value;
-    // CanopyChanger.description.innerHTML = CC.description.value;
-    // CanopyChanger.location.innerHTML = CC.location.value;
-
     // event listener
     CC.name.addEventListener('keypress', function(){
       setTimeout(function(){ CanopyChanger.name.innerHTML = CC.name.value; }, 1);
@@ -47,5 +42,3 @@ window.onload = function() {
     });
   }
 }
-
-// ToDo:文字入力の反映

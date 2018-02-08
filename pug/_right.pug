@@ -1,17 +1,26 @@
 div#right
   //- tweet box
   div#tweet-box: div.textbox-wrapper
-    div: div.capture
+    div: div.capture.name
       span.title name:
       input.textbox.name(type="text" placeholder="{{data['screen']}}")
+      div.name.counter-wrapper
+        div.name.counter 0
+        div.name.maxval {{maxval["name"]}}
 
-    div: div.capture
+    div: div.capture.description
       span.title description:
       input.textbox.description(type="text" placeholder="{{data['description']}}")
+      div.description.counter-wrapper
+        div.description.counter 0
+        div.description.maxval {{maxval["description"]}}
 
-    div: div.capture
+    div: div.capture.location
       span.title locale:
       input.textbox.location(type="text" placeholder="{{data['location']}}")
+      div.location.counter-wrapper
+        div.location.counter 0
+        div.location.maxval {{maxval["location"]}}
 
     div.button-wrapper
       input#allow_tweet(type="checkbox" name="tweet" checked)

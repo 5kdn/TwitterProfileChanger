@@ -28,8 +28,8 @@ def index():
   # maxval : 最大文字数
   maxval = {
     "name"        : 50,
-    "description" : 100,
-    "location"    : 200,
+    "description" : 160,
+    "location"    : 100,
   }
   return render_template('index.html', data=data, logs=l.getAll(), maxval=maxval )
 

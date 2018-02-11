@@ -30,7 +30,7 @@ div#right
 
   //- change log
   |
-  |{% for log in logs %}
+  |{% for log in logs[::-1] %}
   article.history {{log[4]}} に変更されました。
     br
     |名前：{{log[1]}}
@@ -38,4 +38,5 @@ div#right
     |場所：{{log[2]}}
     br
     |説明：{{log[3]}}
+    |
   |{% endfor %}

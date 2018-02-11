@@ -68,8 +68,9 @@
               </div>
             </div>
           </div>
-          {% for log in logs %}
-          <article class="history">{{log[4]}} に変更されました。<br>名前：{{log[1]}}<br>場所：{{log[2]}}<br>説明：{{log[3]}}</article>{% endfor %}
+          {% for log in logs[::-1] %}
+          <article class="history">{{log[4]}} に変更されました。<br>名前：{{log[1]}}<br>場所：{{log[2]}}<br>説明：{{log[3]}}</article>
+          {% endfor %}
         </div>
       </div>
     </div>

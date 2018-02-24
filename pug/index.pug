@@ -19,11 +19,10 @@ html(lang="ja")
       div#container
         div#ProfileCard
           div#Card-icon.outer-center
-            //- img(src="/twitter/static/skdn.jpg")
             img(src="{{data['icon']}}")
           div#Card-wrapper
             div#Card-handle
-              div#screen {{data['screen']}}
+              div#screen {{data['name']}}
               div#handle @5kdn
             p#Card-des {{data['description']}}
             span#Card-location {{data['location']}}

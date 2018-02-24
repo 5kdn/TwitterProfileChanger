@@ -48,6 +48,12 @@ $columnSizeMin: 100px;
       .textbox {
         width: $columnSize - 100px - 52px;
         margin-right: 14px;
+
+        &.overlength{
+          background: #Faa;
+          border:#F00 2px solid;
+          color: #F00;
+        }
       }
       div.counter-wrapper {
         display: flex;

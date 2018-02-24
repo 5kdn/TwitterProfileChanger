@@ -13,55 +13,31 @@ window.onload = function () {
     CC.location = document.querySelector('input.textbox.location');
 
     // event listener
+    function countchanger(targetclass, siz) {
+      if ($(targetclass).val().length <= siz) {
+        $(targetclass).removeClass('overlength');
+      } else {
+        $(targetclass).addClass('overlength');
+      }
+
+    }
+
     // name
-    CC.name.addEventListener('keypress', function () {
-      setTimeout(function () {
-        COUNTER.name.innerHTML = CC.name.value.length;
-      }, 1);
-    });
-    CC.name.addEventListener('change', function () {
-      setTimeout(function () {
-        COUNTER.name.innerHTML = CC.name.value.length;
-      }, 1);
-    });
-    CC.name.addEventListener('paste', function () {
-      setTimeout(function () {
-        COUNTER.name.innerHTML = CC.name.value.length;
-      }, 1);
+    $('input.textbox.name').on('keypress keyup change paste', function () {
+      COUNTER.name.innerHTML = CC.name.value.length;
+      countchanger('input.textbox.name', 50);
     });
 
     // description
-    CC.description.addEventListener('keypress', function () {
-      setTimeout(function () {
+    $('input.textbox.description').on('keypress keyup change paste', function () {
         COUNTER.description.innerHTML = CC.description.value.length;
-      }, 1);
-    });
-    CC.description.addEventListener('change', function () {
-      setTimeout(function () {
-        COUNTER.description.innerHTML = CC.description.value.length;
-      }, 1);
-    });
-    CC.description.addEventListener('paste', function () {
-      setTimeout(function () {
-        COUNTER.description.innerHTML = CC.description.value.length;
-      }, 1);
+        countchanger('input.textbox.description', 100);
     });
 
     // location
-    CC.location.addEventListener('keypress', function () {
-      setTimeout(function () {
+    $('input.textbox.location').on('keypress keyup change paste', function () {
         COUNTER.location.innerHTML = CC.location.value.length;
-      }, 1);
-    });
-    CC.location.addEventListener('change', function () {
-      setTimeout(function () {
-        COUNTER.location.innerHTML = CC.location.value.length;
-      }, 1);
-    });
-    CC.location.addEventListener('paste', function () {
-      setTimeout(function () {
-        COUNTER.location.innerHTML = CC.location.value.length;
-      }, 1);
+        countchanger('input.textbox.location', 200);
     });
 
   }

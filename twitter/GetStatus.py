@@ -9,10 +9,13 @@ from keys import Consumer, Token
 class GetStatus(object):
   """Get status."""
 
-  def getStatus(self, *args):
+  def getStatus(self, **kwargs):
     """Get status."""
-    c = Consumer(*args)
-    t = Token(*args)
+    c = Consumer()
+    if 'DEBUG' in kwargs:
+      t = Token(DEBUG = kwargs['DEBUG'])
+    else:
+      t = Token()
     auth = tweepy.OAuthHandler(c.key, c.secret)
     auth.set_access_token(t.key, t.secret)
     api = tweepy.API(auth)
@@ -22,9 +25,15 @@ class GetStatus(object):
     profiles['name'] = me.name
     profiles['location'] = me.location
     profiles['description'] = me.description
-    return json.dumps(profiles)
+    profiles['icon'] = me.profile_image_url_https.replace('_normal', '')
+    if me.profile_use_background_image == 'True':
+      profiles['bg_image'] = me.profile_background_image_url_https
+    else:
+      profiles['bg_image'] = None
+    return profiles
+
 
 
 if __name__ == '__main__':
   g = GetStatus()
-  print(g.getStatus())
+  print( g.getStatus() )

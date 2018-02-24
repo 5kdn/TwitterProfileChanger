@@ -17,13 +17,8 @@ app = Flask(__name__, static_url_path='/twitter/static')
 @app.route('/twitter/')
 def index():
   """Index."""
-  status = json.loads(getStatus())
-  print(status['name'])
-  data = {
-      'screen': status['name'],
-      'description': status['description'],
-      'location': status['location'],
-  }
+  g = GetStatus()
+  data = g.getStatus()
   l = Log()
   # maxval : 最大文字数
   maxval = {
@@ -46,11 +41,6 @@ def script_js(script='script'):
   return render_template(f'/js/{script}.js'), 200, {"Content-Type": 'text/javascript; charset=utf-8'}
 
 
-@app.route('/twitter/static/skdn.jpg')
-def skdn_jpg():
-  """Icon."""
-  return redirect('/twitter/static/skdn.jpg')
-
 @app.route('/twitter/static/edge-icons-Regular.woff')
 def font_file():
   """Fontfile."""
@@ -63,7 +53,7 @@ def font_file():
 def getStatus():
   """Get Status."""
   g = GetStatus()
-  return g.getStatus()
+  return json.dumps( g.getStatus() )
 
 
 @app.route('/twitter/setStatus', methods=['POST'])
@@ -97,7 +87,7 @@ def setStatus():
     l = Log()
     l.add(name, description, location)
 
-    return newProf
+    return json.dumps( newProf )
   except ValueError as e:
     print(e)
     return jsonify(res='error'), 500

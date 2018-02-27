@@ -1,0 +1,44 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": true,
+      "pythonPath": "${workspaceFolder}/Py364/Scripts/python.exe",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/twitter",
+      "env": {},
+      "debugOptions": [
+        "RedirectOutput"
+      ],
+
+    },
+    {
+      "name": "Flask",
+      "type": "python",
+      "request": "launch",
+      "stopOnEntry": false,
+      "pythonPath": "${workspaceFolder}/Py364/Scripts/python.exe",
+      "program": "${workspaceFolder}/Py364/Scripts/flask.exe",  // fully qualified path fo 'flask' executable. Generally located along with python interpreter
+      "module": "flask",
+      "cwd": "${workspaceFolder}/twitter",
+      "env": {
+        "FLASK_APP": "${workspaceFolder}/twitter/app.py"
+      },
+      "args": [
+        "run",
+        "--no-debugger",
+        // "--no-reload"
+      ],
+      // "envFile": "${workspaceFolder}/.env",
+      "debugOptions": [
+        "RedirectOutput"
+      ]
+    },
+  ]
+}

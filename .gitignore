@@ -1,8 +1,8 @@
 __pycache__
 .mypy_cache
-.vscode
 node_modules
 *.sock
 *.log
 *.db
-twitter/updatelog.db
+updatelog.db
+Py364

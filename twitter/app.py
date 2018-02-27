@@ -2,31 +2,34 @@
 # -*- coding: utf-8 -*-
 """Flask."""
 
-from flask import Flask, render_template, request, redirect, url_for, jsonify
 import json
 
-from GetStatus import GetStatus
-from SetStatus import SetStatus
-from Log import Log
+from flask import Flask, jsonify, redirect, render_template, request
 
+from GetStatus import GetStatus
+from Log import Log
+from SetStatus import SetStatus
 
 app = Flask(__name__, static_url_path='/twitter/static')
+
+# if DEBUG is True, use @sakuden account
+DEBUG = False
 
 
 # static files
 @app.route('/twitter/')
 def index():
   """Index."""
-  g = GetStatus()
-  data = g.getStatus()
-  l = Log()
+  g = GetStatus(DEBUG=DEBUG)
+  data = g.get_status()
+  log = Log()
   # maxval : 最大文字数
   maxval = {
     "name"        : 50,
     "description" : 160,
     "location"    : 100,
   }
-  return render_template('index.html', data=data, logs=l.getAll(), maxval=maxval )
+  return render_template('index.html', data=data, logs=log.get_all(), maxval=maxval )
 
 
 @app.route('/twitter/css/<name>.css')
@@ -50,14 +53,14 @@ def font_file():
 # ==============================================================================
 
 @app.route('/twitter/getStatus')
-def getStatus():
+def get_status():
   """Get Status."""
-  g = GetStatus()
-  return json.dumps( g.getStatus() )
+  g = GetStatus(DEBUG=DEBUG)
+  return json.dumps( g.get_status() )
 
 
 @app.route('/twitter/setStatus', methods=['POST'])
-def setStatus():
+def set_status():
   """Set Status."""
   if request.headers['Content-Type'] != 'application/json; charset=UTF-8':
     print(request.headers['Content-Type'])
@@ -76,38 +79,38 @@ def setStatus():
     tweet = False
   else: tweet = True
 
-  # print(f"send request : {request.json}")
   try:
-    s = SetStatus()
-    s.setStatus(name, description, location, tweet)
-    g = GetStatus()
-    newProf = g.getStatus()
+    s = SetStatus(DEBUG=DEBUG)
+    s.set_status(name, description, location, tweet)
+    g = GetStatus(DEBUG=DEBUG)
+    new_prof = g.get_status()
 
     # Logging
-    l = Log()
-    l.add(name, description, location)
+    log = Log()
+    log.add(name, description, location)
 
-    return json.dumps( newProf )
-  except ValueError as e:
-    print(e)
+    return json.dumps( new_prof )
+  except ValueError as err:
+    print(err)
     return jsonify(res='error'), 500
-  except:
+  except Exception as err:
+    print(err)
     return jsonify(res='error'), 501
 
 
 @app.route('/twitter/getLogs')
-def getLogs():
+def get_logs():
   """Get All logs."""
-  l = Log()
-  return jsonify(l.getAll())
+  log = Log()
+  return jsonify(log.get_all())
 
 
 @app.route('/twitter/getRecentLog')
-def getLog():
+def get_log():
   """Get All logs."""
-  l = Log()
-  return jsonify(l.getRecent())
+  log = Log()
+  return jsonify(log.get_recent())
+
 
 if __name__ == '__main__':
   app.run()
-

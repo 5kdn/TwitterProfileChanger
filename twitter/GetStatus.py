@@ -2,30 +2,32 @@
 # -*- coding: utf-8 -*-
 """Get status."""
 import tweepy
-import json
+
 from keys import Consumer, Token
 
 
 class GetStatus(object):
   """Get status."""
 
-  def getStatus(self, **kwargs):
-    """Get status."""
+  def __init__(self, **kwargs):
+    """Initializer."""
     c = Consumer()
     if 'DEBUG' in kwargs:
-      t = Token(DEBUG = kwargs['DEBUG'])
+      t = Token(DEBUG=kwargs['DEBUG'])
     else:
       t = Token()
     auth = tweepy.OAuthHandler(c.key, c.secret)
     auth.set_access_token(t.key, t.secret)
-    api = tweepy.API(auth)
+    self.__api = tweepy.API(auth)
 
-    me = api.me()
+  def get_status(self):
+    """Get status."""
+    me = self.__api.me()
     profiles = {}
     profiles['name'] = me.name
     profiles['location'] = me.location
     profiles['description'] = me.description
-    profiles['icon'] = me.profile_image_url_https.replace('_normal', '')
+    profiles['icon'] = me.profile_image_url_https.replace('_normal.', '.')
     if me.profile_use_background_image == 'True':
       profiles['bg_image'] = me.profile_background_image_url_https
     else:
@@ -33,7 +35,6 @@ class GetStatus(object):
     return profiles
 
 
-
 if __name__ == '__main__':
   g = GetStatus()
-  print( g.getStatus() )
+  print( g.get_status() )

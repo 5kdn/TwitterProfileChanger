@@ -33,7 +33,6 @@
       "args": [
         "run",
         "--no-debugger",
-        // "--no-reload"
       ],
       // "envFile": "${workspaceFolder}/.env",
       "debugOptions": [

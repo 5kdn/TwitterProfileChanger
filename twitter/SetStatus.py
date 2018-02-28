@@ -41,7 +41,7 @@ class SetStatus(object):
     try:
       if tweet is True:
         now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
-        msg = f'{now}に@5kdnのプロフィールを変更しました? from 5kdnのプロフィール変更するやつ : https://5kdn.red/twitter/↓'
+        msg = f'{now}に@5kdnのプロフィールを変更しました? from 5kdnのプロフィール変更するやつ : https://5kdn.red/twitter/'
         self.__api.update_status(msg)
     except Exception as err:
       print("error has occured in SetStatus.py")

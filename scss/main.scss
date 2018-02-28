@@ -6,6 +6,7 @@ $color-1st: rgb(255, 255, 255); // article base
 $color-2nd: rgb(245, 248, 250); // article base hover
 $color-text: rgb(20, 23, 26);
 $color-text-link: rgb(143, 7, 0);
+@import '__mixin.scss';
 @import '__reset.scss';
 @import '__Header.scss';
 @import '__Canopy.scss';

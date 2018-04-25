@@ -21,14 +21,31 @@
     </div>
     <div class="outer-spacer" id="wrapper">
       <div id="container">
-        <div id="ProfileCard">
-          <div class="outer-center" id="Card-icon"><img src="{{data['icon']}}"></div>
-          <div id="Card-wrapper">
-            <div id="Card-handle">
-              <div id="screen">{{data['name']}}</div>
-              <div id="handle">@5kdn</div>
+        <div id="ProfileCard__wrapper">
+          <div id="ProfileCard">
+            <div class="circleicon__wrapper"><img class="circleicon" src="{{data['icon']}}" width="200" height="200"></div>
+            <div id="Card-wrapper">
+              <div id="Card-handle">
+                <div id="screen">{{data['name']}}</div>
+                <div id="handle">@5kdn</div>
+              </div>
+              <p id="Card-des">{{data['description']}}</p><span id="Card-location">{{data['location']}}</span><br><span id="Card-urlText-wrapper"><a id="Card-urlText" href="http://5kdn.red">http://5kdn.red</a></span>
             </div>
-            <p id="Card-des">{{data['description']}}</p><span id="Card-location">{{data['location']}}</span><br><span id="Card-urlText-wrapper"><a id="Card-urlText" href="http://5kdn.red">http://5kdn.red</a></span>
+          </div>
+          <div id="NewIconArrow">
+            <div class="arrow unselected">&nbsp;</div>
+          </div>
+          <div id="NewIcon">
+            <div class="Card-icon">
+              <div class="circleicon__wrapper"><img class="circleicon unselected" src="{{data['icon']}}" width="200" height="200"></div>
+              <div class="dropArea">&nbsp;</div>
+            </div>
+            <div id="picicon__wrapper">
+              <div><span>or</span></div>
+              <div class="button__wrapper"><a class="button" src="#">クリックしてファイルを追加</a></div>
+              <div class="uploadIconFilename">&nbsp;</div>
+              <div class="button__wrapper"><a class="button disabled" src="#">クリア</a></div>
+            </div>
           </div>
         </div>
         <div id="right">
@@ -69,7 +86,7 @@
             </div>
           </div>
           {% for log in logs[::-1] %}
-          <article class="history">{{log[4]}} に変更されました。<br>名前：{{log[1]}}<br>場所：{{log[2]}}<br>説明：{{log[3]}}
+          <article class="history">{{log[4]}} に変更されました。<br>名前：{{log[1]}}<br>説明：{{log[2]}}<br>場所：{{log[3]}}
             
           </article>{% endfor %}
         </div>

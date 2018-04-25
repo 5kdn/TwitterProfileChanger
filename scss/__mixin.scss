@@ -1,0 +1,107 @@
+/// 上向きの矢印を作る
+/// div.arrow{&nbsp;}{
+/// @include upper-arrow;
+/// }
+@mixin upper-arrow( $width:120px, $height:100px, $headHeight:60px, $color:#7a0) {
+  $headWidth: $width;
+  $lineWidth: $width * 0.5;
+  $lineHeight: $height - $headHeight;
+  height: $height;
+  width: $width;
+  position: relative;
+  display: flex;
+  text-decoration: none;
+  font-size: 0;
+  &::before {
+    // head parts
+    position: absolute;
+    left: 0;
+    top: -1 * $height;
+    box-sizing: border-box;
+    border: ($headWidth / 2) solid transparent;
+    border-bottom: $headHeight solid $color;
+    content: "";
+  }
+  &::after {
+    // line parts
+    position: absolute;
+    top: $headHeight;
+    content: "";
+    left: ($width - $lineWidth)/2;
+    width: $lineWidth;
+    border-bottom: $lineHeight solid $color;
+  }
+}
+
+/// 内向きの矢印を作る
+/// div.arrow{&nbsp;}{
+/// @include upper-arrow;
+/// }
+@mixin entering-inside-arrow( $width:120px, $height:100px, $headHeight:60px, $color:#7a0) {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 0;
+  $color: #7a0;
+  &::before {
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    box-sizing: border-box;
+    height: $headHeight;
+    border: $headHeight solid transparent;
+    border-left: $headHeight solid $color;
+    transform: rotate(45deg);
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+  }
+  &.selected::before,
+  &.selected::after{
+    content:none;
+  }
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0 solid transparent;
+    border-top: 30px solid $color;
+    border-radius: 90px 0 0;
+    width: 80px;
+    height: 80px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+    &:hover {
+      border-top: 30px solid $color;
+    }
+    &.selected {
+      display: none;
+      visibility: hidden;
+    }
+  }
+}
+
+/// アイコンを円形にする
+/// div.circleicon__wrapper > img.circleicon
+/// .circleicon{
+///   @include circle-icon;
+/// }
+@mixin circle-icon($diameter: 200px, $border:10px) {
+  border-radius: 50%;
+  display: block;
+  height: $diameter;
+  width: $diameter;
+  &__wrapper {
+    position: relative;
+    background: #FFF;
+    border-radius: 50%;
+    height: $diameter + $border;
+    width: $diameter + $border;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

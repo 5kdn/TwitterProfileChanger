@@ -28,11 +28,6 @@ gulp.task('html', () =>{
     .pipe(gulp.dest(rootDir));
 });
 
-gulp.task('html:watch', ()=> {
-  gulp.watch(pugFiles, ['html']);
-});
-
-
 // = CONVERT SASS TO CSS =======================================================
 const sass = require('gulp-sass');
 
@@ -48,8 +43,12 @@ gulp.task('css', () =>{
     .pipe(gulp.dest(path.join(rootDir + 'css')));
 });
 
-gulp.task('css:watch', ()=>{
-  gulp.watch(sassFiles, ['css']);
+gulp.task('css:debug', ()=>{
+  return gulp.src(sassTarget)
+    .pipe(sass({
+      outputStyle: 'concat'
+    }).on('error', sass.logError))
+    .pipe(gulp.dest(path.join(rootDir + 'css')));
 });
 
 // = MINIFY JAVASCRIPT =========================================================
@@ -70,9 +69,13 @@ gulp.task('js', function () {
   .pipe(gulp.dest(path.join(rootDir, 'js/')));
 });
 
-gulp.task('js:watch', function () {
-  gulp.watch(jsFiles, ['js']);
-});
+gulp.task('js:debug', function () {
+  return gulp.src(jsTarget)
+    .pipe(plumber()) // error
+    .pipe(concat('script.js'))
+    .pipe(rename('script.min.js'))
+    .pipe(gulp.dest(path.join(rootDir, 'js/')));
+  });
 
 
 
@@ -81,4 +84,8 @@ gulp.task('js:watch', function () {
 var allFiles = pugFiles.concat(sassFiles).concat(jsFiles);
 gulp.task('default', () => {
   gulp.watch(allFiles, ['html', 'css', 'js']);
+});
+
+gulp.task('debug', () => {
+  gulp.watch(allFiles, ['html', 'css:debug', 'js:debug']);
 });

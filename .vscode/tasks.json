@@ -8,7 +8,15 @@
       "task": "default",
       "problemMatcher": [],
       "label": "DEFAULT",
-      "promptOnClose": true,
+      "promptOnClose": true
+    },
+    {
+      "type": "gulp",
+      "task": "debug",
+      "label": "DEBUG",
+      "problemMatcher": [
+        "$gulp-tsc"
+      ]
     }
   ]
 }

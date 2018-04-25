@@ -1,68 +1,159 @@
+@import '__mixin.scss';
 @font-face {
   font-family: 'edgeicons';
   src: url('/twitter/static/edge-icons-Regular.woff') format('woff');
 }
 
-#ProfileCard {
-  padding: 0 5px;
-  width: 290px;
-  &>* {
-    margin-bottom: 10px;
-  }
-  #Card-icon {
-    background: #FFF;
-    border-radius: 50%;
-    height: 210px;
-    position: relative;
-    top: -200px;
-    width: 210px;
-    >img {
-      border-radius: 50%;
-      display: block;
-      height: 200px;
-      width: 200px;
+.circleicon {
+  @include circle-icon;
+}
+
+// =====================================================
+#ProfileCard__wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  @at-root #ProfileCard {
+    padding: 0 5px;
+    width: 290px;
+    height: 180px;
+    &>* {
+      margin-bottom: 10px;
     }
-  }
-  #Card-wrapper {
-    color: #14171a;
-    font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    position: relative;
-    top: -205px;
-    line-height: 1.4em;
-    #Card-handle {
-      #screen {
-        font-size: 21px;
-        font-weight: bold;
-        line-height: 28px;
-        word-wrap: break-word;
+    .circleicon__wrapper {
+      position: relative;
+      top: -200px;
+      .circleicon {
+        @include circle-icon;
       }
-      #handle {
+    }
+    @at-root #Card-wrapper {
+      color: #14171a;
+      font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      position: relative;
+      top: -205px;
+      line-height: 1.4em;
+      @at-root #Card-handle {
+        @at-root #screen {
+          font-size: 21px;
+          font-weight: bold;
+          line-height: 28px;
+          word-wrap: break-word;
+        }
+        @at-root #handle {
+          color: #657786;
+          font-size: 14px;
+        }
+      }
+      @at-root #Card-des {
+        margin-top: 10px;
+      }
+      @at-root #Card-location {
+        margin-top: 10px;
+        display: inline-block;
         color: #657786;
-        font-size: 14px;
+        &::before {
+          content: '\f031';
+          font-family: 'edgeicons';
+        }
+      }
+      @at-root #Card-urlText-wrapper {
+        color: #657786;
+        &::before {
+          content: '\f098';
+          font-family: 'edgeicons';
+        }
+        @at-root #Card-urlText {
+          color: $color-text-link; // font-size: 10px;
+        }
       }
     }
-    #Card-des {
-      margin-top: 10px;
+  }
+}
+
+// =====================================================
+#NewIconArrow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  .arrow {
+    $allow-color: #7a0;
+    $width: 100px;
+    $height: 50px;
+    $headHeight: 30px;
+    $lineHeight: $height - $headHeight;
+    @include upper-arrow($width,
+    $height,
+    $headHeight,
+    $allow-color);
+    &.unselected {
+      $gray: grayscale(lighten($color: $allow-color, $amount: 50));
+      &::before {
+        border-bottom: $headHeight solid $gray;
+      }
+      &::after {
+        border-bottom: $lineHeight solid $gray;
+      }
     }
-    #Card-location {
-      margin-top: 10px;
+  }
+}
+
+#NewIcon {
+  position: relative;
+  .Card-icon {
+    top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+  .circleicon {
+    &__wrapper {
+      z-index: 1;
+    }
+    &.unselected {
+      filter: grayscale(0.7) opacity(0.6);
+      -webkit-filter: grayscale(0.7) opacity(0.6);
+      filter: gray;
+    }
+  }
+  .dropArea {
+    $color: #7a0;
+    position: absolute;
+    height: 210px;
+    width: 210px;
+    z-index: 10;
+    border: 3px dotted $color;
+    border-radius: 5px;
+    @include entering-inside-arrow($color: $color);
+  }
+}
+
+#picicon {
+  &__wrapper {
+    width: 300px;
+    padding-top: 5px;
+    span {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .button {
       display: inline-block;
-      color: #657786;
-      &::before {
-        content: '\f031';
-        font-family: 'edgeicons';
+
+      &:hover {
+        background: lighten($color-text-link, 10%);
+      }
+      &.disabled {
+        background: grayscale($color-text-link);
+        color: darken(#FFF, 30%);
+      }
+      &__wrapper {
+        text-align: center;
       }
     }
-    #Card-urlText-wrapper {
-      color: #657786;
-      &::before {
-        content: '\f098';
-        font-family: 'edgeicons';
-      }
-      #Card-urlText {
-        color: $color-text-link;
-        // font-size: 10px;
-      }
+    .uploadIconFilename {
+      display: inline-block;
+      text-align: center;
+      line-height: 2em;
+      word-wrap: break-word;
     }
   }
 }

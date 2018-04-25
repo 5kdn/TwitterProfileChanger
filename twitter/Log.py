@@ -2,14 +2,15 @@
 # -*- coding: utf-8 -*-
 """Log to db and send discord."""
 
+import json
 import os
 import sqlite3
-from datetime import datetime
 from contextlib import closing
-import json
-import requests
+from datetime import datetime
 
 import pytz
+import requests
+
 
 class Log(object):
   """Log to db and discord."""
@@ -32,7 +33,7 @@ class Log(object):
         c.execute(sql)
         conn.commit()
 
-  def __addDB(self, name, description, location):
+  def __add_db(self, name, description, location):
     """Add updates for db."""
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
@@ -44,33 +45,33 @@ class Log(object):
       conn.commit()
       print('db updated')
 
-  def __sendDiscord(self, name, description, location):
+  def __send_discord(self, name, description, location):
     """Send updates for discord."""
-
     url     = 'https://discordapp.com/api/webhooks/410690057784131584/r22pmh6d0ud9J4FukETrPyrj8tn5piknnjEdvx03XhNPmoiHJvV8Rmr9HROZ1nBCHERg'
     headers = {"Content-Type" : "application/json"}
-    data   = {"content": f"@5kdn's twitter profile has changed.\n[name]\n{name}\n[description]\n{description}\n[location]\n{location}"}
+    data    = {"content": f"@5kdn's twitter profile has changed.\n[name]\n{name}\n[description]\n{description}\n[location]\n{location}"}
     data    = json.dumps(data).encode('utf-8')
     requests.post(url, data=data, headers=headers)
-
 
   def add(self, name, description, location):
     """Add updates for db and send for discord."""
     try:
-      self.__addDB(name, description, location)
-    except:
+      self.__add_db(name, description, location)
+    except Exception as err:
       print('failed to add db.')
-    try:
-      self.__sendDiscord(name, description, location)
-    except:
-      print('failed to send discord.')
+      print(err.value)
 
-  def getAll(self):
+    try:
+      self.__send_discord(name, description, location)
+    except Exception as err:
+      print('failed to send discord.')
+      print(err.value)
+
+  def get_all(self):
     """Return all updated log."""
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
       sql = 'select id, name, description, location, updated from updates order by id;'
-      req = c.execute(sql).fetchall()
       tz = pytz.timezone('Asia/Tokyo')
       items = []
       for row in c.execute(sql).fetchall():
@@ -85,14 +86,14 @@ class Log(object):
         items.append(item)
     return items
 
-  def getRecent(self):
+  def get_recent(self):
     """Return recentry updated log."""
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
       sql = 'select id, name, description, location from updates order by id asc;'
       ret = c.execute(sql).fetchone()
       if ret is None:
-        item = {"":""}
+        item = {"": ""}
       else:
         item = {}
         item['name'] = ret[0]
@@ -101,23 +102,21 @@ class Log(object):
     return item
 
 
-def main():
+if __name__ == '__main__':
   print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-  changeItem = { "name": "ensakud",
-                 "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
-                 "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
-                }
-  l = Log()
-  l.add(changeItem["name"], changeItem["description"], changeItem["location"])
+  change_item = {
+    "name": "ensakud",
+    "location": "\u3042\u306e\u3001\u3053\u3053\u30c4\u30a4\u30fc\u30c8\u6b04\u3058\u3083\u306a\u3044\u3067\u3059\u3002\u3002\u3002",
+    "description": "\u6700\u8fd1\u540d\u524d\u5909\u3048\u3089\u308c\u306a\u304f\u306a\u3044\uff1f\u2193\u2190\u305d\u308cis\u3042\u308b"
+  }
+  log = Log()
+  log.add(change_item["name"], change_item["description"], change_item["location"])
   # # =====================
   print('= getall ========================')
-  items =  l.getAll()
+  items = log.get_all()
   for item in items:
     print(item)
   print('= getall ========================')
   print( type(json.dumps(items)) )
   print('= get recent ====================')
-  # print(l.getRecent())
-
-if __name__ == '__main__':
-  main()
+  print(log.get_recent())

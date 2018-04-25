@@ -88,53 +88,187 @@ table {
   font-family: 'edgeicons';
   src: url("/twitter/static/edge-icons-Regular.woff") format("woff"); }
 
-#ProfileCard {
-  padding: 0 5px;
-  width: 290px; }
-  #ProfileCard > * {
-    margin-bottom: 10px; }
-  #ProfileCard #Card-icon {
+.circleicon {
+  border-radius: 50%;
+  display: block;
+  height: 200px;
+  width: 200px; }
+  .circleicon__wrapper {
+    position: relative;
     background: #FFF;
     border-radius: 50%;
     height: 210px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center; }
+
+#ProfileCard__wrapper {
+  display: flex;
+  flex-flow: column nowrap; }
+  #ProfileCard {
+    padding: 0 5px;
+    width: 290px;
+    height: 180px; }
+    #ProfileCard > * {
+      margin-bottom: 10px; }
+    #ProfileCard .circleicon__wrapper {
+      position: relative;
+      top: -200px; }
+      #ProfileCard .circleicon__wrapper .circleicon {
+        border-radius: 50%;
+        display: block;
+        height: 200px;
+        width: 200px; }
+        #ProfileCard .circleicon__wrapper .circleicon__wrapper {
+          position: relative;
+          background: #FFF;
+          border-radius: 50%;
+          height: 210px;
+          width: 210px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center; }
+    #Card-wrapper {
+      color: #14171a;
+      font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      position: relative;
+      top: -205px;
+      line-height: 1.4em; }
+      #screen {
+        font-size: 21px;
+        font-weight: bold;
+        line-height: 28px;
+        word-wrap: break-word; }
+      #handle {
+        color: #657786;
+        font-size: 14px; }
+      #Card-des {
+        margin-top: 10px; }
+      #Card-location {
+        margin-top: 10px;
+        display: inline-block;
+        color: #657786; }
+        #Card-location::before {
+          content: '\f031';
+          font-family: 'edgeicons'; }
+      #Card-urlText-wrapper {
+        color: #657786; }
+        #Card-urlText-wrapper::before {
+          content: '\f098';
+          font-family: 'edgeicons'; }
+        #Card-urlText {
+          color: #8f0700; }
+
+#NewIconArrow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px; }
+  #NewIconArrow .arrow {
+    height: 50px;
+    width: 100px;
     position: relative;
-    top: -200px;
-    width: 210px; }
-    #ProfileCard #Card-icon > img {
-      border-radius: 50%;
-      display: block;
-      height: 200px;
-      width: 200px; }
-  #ProfileCard #Card-wrapper {
-    color: #14171a;
-    font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    position: relative;
-    top: -205px;
-    line-height: 1.4em; }
-    #ProfileCard #Card-wrapper #Card-handle #screen {
-      font-size: 21px;
-      font-weight: bold;
-      line-height: 28px;
-      word-wrap: break-word; }
-    #ProfileCard #Card-wrapper #Card-handle #handle {
-      color: #657786;
-      font-size: 14px; }
-    #ProfileCard #Card-wrapper #Card-des {
-      margin-top: 10px; }
-    #ProfileCard #Card-wrapper #Card-location {
-      margin-top: 10px;
-      display: inline-block;
-      color: #657786; }
-      #ProfileCard #Card-wrapper #Card-location::before {
-        content: '\f031';
-        font-family: 'edgeicons'; }
-    #ProfileCard #Card-wrapper #Card-urlText-wrapper {
-      color: #657786; }
-      #ProfileCard #Card-wrapper #Card-urlText-wrapper::before {
-        content: '\f098';
-        font-family: 'edgeicons'; }
-      #ProfileCard #Card-wrapper #Card-urlText-wrapper #Card-urlText {
-        color: #8f0700; }
+    display: flex;
+    text-decoration: none;
+    font-size: 0; }
+    #NewIconArrow .arrow::before {
+      position: absolute;
+      left: 0;
+      top: -50px;
+      box-sizing: border-box;
+      border: 50px solid transparent;
+      border-bottom: 30px solid #7a0;
+      content: ""; }
+    #NewIconArrow .arrow::after {
+      position: absolute;
+      top: 30px;
+      content: "";
+      left: 25px;
+      width: 50px;
+      border-bottom: 20px solid #7a0; }
+    #NewIconArrow .arrow.unselected::before {
+      border-bottom: 30px solid #d5d5d5; }
+    #NewIconArrow .arrow.unselected::after {
+      border-bottom: 20px solid #d5d5d5; }
+
+#NewIcon {
+  position: relative; }
+  #NewIcon .Card-icon {
+    top: 100px;
+    display: flex;
+    justify-content: center; }
+  #NewIcon .circleicon__wrapper {
+    z-index: 1; }
+  #NewIcon .circleicon.unselected {
+    filter: grayscale(0.7) opacity(0.6);
+    -webkit-filter: grayscale(0.7) opacity(0.6);
+    filter: gray; }
+  #NewIcon .dropArea {
+    position: absolute;
+    height: 210px;
+    width: 210px;
+    z-index: 10;
+    border: 3px dotted #7a0;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 0; }
+    #NewIcon .dropArea::before {
+      position: absolute;
+      top: 30px;
+      left: 70px;
+      box-sizing: border-box;
+      height: 60px;
+      border: 60px solid transparent;
+      border-left: 60px solid #7a0;
+      transform: rotate(45deg);
+      margin: auto;
+      content: "";
+      vertical-align: middle; }
+    #NewIcon .dropArea.selected::before, #NewIcon .dropArea.selected::after {
+      content: none; }
+    #NewIcon .dropArea::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0 solid transparent;
+      border-top: 30px solid #7a0;
+      border-radius: 90px 0 0;
+      width: 80px;
+      height: 80px;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      margin: auto;
+      content: "";
+      vertical-align: middle; }
+      #NewIcon .dropArea::after:hover {
+        border-top: 30px solid #7a0; }
+      #NewIcon .dropArea::after.selected {
+        display: none;
+        visibility: hidden; }
+
+#picicon__wrapper {
+  width: 300px;
+  padding-top: 5px; }
+  #picicon__wrapper span {
+    display: block;
+    width: 100%;
+    text-align: center; }
+  #picicon__wrapper .button {
+    display: inline-block; }
+    #picicon__wrapper .button:hover {
+      background: #c20900; }
+    #picicon__wrapper .button.disabled {
+      background: #484848;
+      color: #b3b3b3; }
+    #picicon__wrapper .button__wrapper {
+      text-align: center; }
+  #picicon__wrapper .uploadIconFilename {
+    display: inline-block;
+    text-align: center;
+    line-height: 2em;
+    word-wrap: break-word; }
 
 #right {
   margin-left: 15px;

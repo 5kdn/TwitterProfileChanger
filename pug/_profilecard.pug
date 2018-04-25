@@ -1,0 +1,27 @@
+div#ProfileCard__wrapper
+  div#ProfileCard
+    div.circleicon__wrapper
+      img.circleicon(src="{{data['icon']}}" width=200 height=200)
+    div#Card-wrapper
+      div#Card-handle
+        div#screen {{data['name']}}
+        div#handle @5kdn
+      p#Card-des {{data['description']}}
+      span#Card-location {{data['location']}}
+      br
+      span#Card-urlText-wrapper
+        a#Card-urlText(href="http://5kdn.red") http://5kdn.red
+
+  div#NewIconArrow
+    div.arrow.unselected &nbsp;
+  div#NewIcon
+    div.Card-icon
+      div.circleicon__wrapper
+        img.circleicon.unselected(src="{{data['icon']}}" width=200 height=200)
+      div.dropArea &nbsp;
+    div#picicon__wrapper
+      div: span or
+      div.button__wrapper: a.button(src="#") クリックしてファイルを追加
+      div.uploadIconFilename &nbsp;
+      div.button__wrapper: a.button.disabled(src="#") クリア
+

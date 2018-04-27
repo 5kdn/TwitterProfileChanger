@@ -6,6 +6,7 @@ import datetime
 import pytz
 import tweepy
 
+from Log import Log
 from keys import Consumer, Token
 
 
@@ -41,8 +42,15 @@ class SetStatus(object):
     try:
       if tweet is True:
         now = datetime.datetime.now(pytz.timezone('Asia/Tokyo'))
-        msg = f'{now}に@5kdnのプロフィールを変更しました? from 5kdnのプロフィール変更するやつ : https://5kdn.red/twitter/'
-        self.__api.update_status(msg)
+        log = Log()
+        url = log.get_recent()
+        print(url)
+        print(url['updated'])
+        url = url['updated'].replace(' ', '-')
+        print('A4')
+        msg = f'{now}に@5kdnのプロフィールを変更しました? from 5kdnのプロフィール変更するやつ : https://5kdn.red/twitter/#{url} \nhttps://5kdn.red/twitter/'
+        print(msg)
+        # self.__api.update_status(msg)
     except Exception as err:
       print("error has occured in SetStatus.py")
       print(err.value)

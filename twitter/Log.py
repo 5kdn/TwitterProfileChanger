@@ -91,15 +91,16 @@ class Log(object):
     """Return recentry updated log."""
     with closing(sqlite3.connect(self.__dbname)) as conn:
       c = conn.cursor()
-      sql = 'select id, name, description, location from updates order by id asc;'
+      sql = 'select id, name, description, location, updated from updates order by id desc;'
       ret = c.execute(sql).fetchone()
       if ret is None:
         item = {"": ""}
       else:
         item = {}
-        item['name'] = ret[0]
-        item['description'] = ret[1]
-        item['location'] = ret[2]
+        item['name'] = ret[1]
+        item['description'] = ret[2]
+        item['location'] = ret[3]
+        item['updated'] = ret[4]
     return item
 
 

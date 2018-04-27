@@ -29,7 +29,7 @@ def index():
     "description" : 160,
     "location"    : 100,
   }
-  return render_template('index.html', data=data, logs=log.get_all(), maxval=maxval )
+  return render_template('index.html', data=data, logs=log.get_all(), maxval=maxval)
 
 
 @app.route('/twitter/css/<name>.css')

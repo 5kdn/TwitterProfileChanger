@@ -11,4 +11,8 @@
   "code-runner.cwd": "${workspaceFolder}/twitter",
   "code-runner.fileDirectoryAsCwd": true,
   "gulptasks.file": "${workspaceFolder}/gulpfile.js",
+  "python.linting.prospectorEnabled": false,
+  "python.linting.pylintEnabled": false,
+  "python.linting.pydocstyleEnabled": false,
+  "python.linting.mypyEnabled": false,
 }

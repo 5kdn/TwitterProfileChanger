@@ -31,7 +31,7 @@ div#right
   //- change log
   |
   |{% for log in logs[::-1] %}
-  article.history {{log[4]}} に変更されました。
+  article.history(id="{{log[5]}}") {{log[4]}} に変更されました。
     br
     |名前：{{log[1]}}
     br

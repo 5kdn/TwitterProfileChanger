@@ -82,6 +82,7 @@ class Log(object):
           row[2],
           row[3],
           str(update),
+          row[4].replace(' ', '-'),
         ]
         items.append(item)
     return items

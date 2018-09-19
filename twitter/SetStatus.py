@@ -49,8 +49,7 @@ class SetStatus(object):
         url = url['updated'].replace(' ', '-')
         print('A4')
         msg = f'{now}に@5kdnのプロフィールを変更しました? from 5kdnのプロフィール変更するやつ : https://5kdn.red/twitter/#{url} \nhttps://5kdn.red/twitter/'
-        print(msg)
-        # self.__api.update_status(msg)
+        self.__api.update_status(msg)
     except Exception as err:
       print("error has occured in SetStatus.py")
       print(err.value)
